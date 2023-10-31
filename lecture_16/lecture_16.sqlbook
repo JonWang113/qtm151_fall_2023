@@ -36,6 +36,7 @@ panel on the left:
 
 Delete existing table
 -- SQLBook: Code
+-- Active: 1698697300518@@127.0.0.1@5432@postgres
 -- If the table already exists we can drop it:
 -- If it doesn't exist nothing happens
 -- System commands are in upper case and user defined
@@ -48,6 +49,7 @@ DROP TABLE IF EXISTS drivers;
 
 Create empty table from codebook
 -- SQLBook: Code
+-- Active: 1698697300518@@127.0.0.1@5432@postgres
 -- Create empty TABLE called "drivers"
 -- This example has five arguments separated by a comma
 -- that contain the "column_name" and "column_type", respectively
@@ -63,6 +65,7 @@ CREATE TABLE drivers(
 
 Add rows to table
 -- SQLBook: Code
+-- Active: 1698697300518@@127.0.0.1@5432@postgres
 -- "INSET INTO" adds rows with VALUES ... to the bottom of the table
 -- In SQL different lines need to be separated by a semicolon ";"
 -- You write system commands in capital letters to easily distinguish
@@ -84,10 +87,12 @@ View the table in the VSC "Database" Panel
 $\qquad$ <img src="figures/view_table_sql.png" alt="drawing" width="350"/>
 
 -- SQLBook: Code
+-- Active: 1698697300518@@127.0.0.1@5432@postgres
 -- In SQL, a set of tables is called a "Schema"
 -- Click "refresh" to see changes
 -- The pencil button edits column attributes
--- The three-stripes button opens the table
+-- The three-stripes button opens the tabl
+
 -- SQLBook: Markup
 <font size="5"> 
 
@@ -98,6 +103,9 @@ Try it yourself!
 -- Add your name/nationality and your neighbors'
 -- Select a new driver id (needs to be unique)
 -- Make sure to deparate arguments by a semicolon!
+
+INSERT INTO drivers  VALUES (5, 'Jenkins Johnson','Canada',73);
+INSERT INTO drivers  VALUES (6, 'Liu Dapao','China',98);
 
 
 
@@ -125,6 +133,7 @@ SELECT * FROM drivers;
 
 Subsetting rows
 -- SQLBook: Code
+-- Active: 1698697300518@@127.0.0.1@5432@postgres
 -- The WHERE command evaluates logical conditions to subset rows
 SELECT * FROM drivers
 WHERE nationality = 'German';
@@ -142,6 +151,7 @@ WHERE (nationality = 'German') AND (driver_id = 2);
 
 Aggregate
 -- SQLBook: Code
+-- Active: 1698697300518@@127.0.0.1@5432@postgres
 -- To compute aggregate statistics use a statistic function,
 -- such as SUM() or AVG() 
 -- The AS is an alias which assigns a name to the aggregate statistic
@@ -187,7 +197,8 @@ with more than 60 victories
 -- SQLBook: Code
 -- Write your own code!
 
-
+SELECT nationality, driver_id FROM drivers
+WHERE victories > 60
 
 -- SQLBook: Markup
 # <span style="color:darkblue"> III. Groupby + Chaining </span>
@@ -198,7 +209,7 @@ Groupby + Aggregate
 -- SQLBook: Code
 -- This command computes summary statistics by nationalitySELECT COUNT(*) AS num_rows,
 -- Including "nationality" (the grouping column) is optional in the select
-SELECT nationality,
+SELECT nationality, --you don't need the actual column, but it helps with clarifying--
        SUM(victories) AS sum_victories,
        AVG(victories) AS mean_victories,
        MIN(victories) AS min_victories,
@@ -223,6 +234,10 @@ SELECT nationality,
 FROM drivers
 GROUP BY nationality
 HAVING SUM(victories) > 50;
+
+-- SQLBook: Code
+--WHERE command aggregates before--
+--HAVING command aggregates afterward--
 -- SQLBook: Markup
 <font size = "5">
 
