@@ -24,6 +24,7 @@ United States Congress dataset
 
 <img src="figures/rdb_us_congress.png" alt="drawing" width="650"/>
 -- SQLBook: Code
+-- Active: 1698697300518@@127.0.0.1@5432@postgres
 #Watch the video to learn how to interpret the data table
 #Entity relationship diagram: a way to represent relational database with minimun repetition 
 #member id is the unique identification for the congress members
@@ -31,16 +32,18 @@ United States Congress dataset
 -- SQLBook: Markup
 # <span style="color:darkblue"> II. Create and Activate a New Database </span>
 -- SQLBook: Code
--- Active: 1698674191041@@127.0.0.1@5432@postgres
+-- Active: 1698697300518@@127.0.0.1@5432@postgres
 
 DROP DATABASE IF EXISTS us_congress;
 -- SQLBook: Code
 CREATE DATABASE us_congress;
 -- SQLBook: Code
--- Active: 1698674191041@@127.0.0.1@5432@us_congress
+-- Active: 1698697300518@@127.0.0.1@5432@us_congress
 CREATE SCHEMA bills;
 
 CREATE SCHEMA members;
+-- SQLBook: Code
+#server > database > schema > tables & stuff
 -- SQLBook: Markup
 <font size = "5">
 
@@ -48,10 +51,14 @@ CREATE SCHEMA members;
 
 - Click on the ```Active Connection``` button and choose the correct database
 -- SQLBook: Code
--- Active: 1698674191041@@127.0.0.1@5432@us_congress
+-- Active: 1698697300518@@127.0.0.1@5432@us_congress
 DROP TABLE IF EXISTS bills.bills_actions;
 DROP TABLE IF EXISTS bills.bills_subjects;
+DROP TABLE IF EXISTS bills.us_congress_members;
 DROP TABLE IF EXISTS members.us_congress_members;
+DROP TABLE IF EXISTS members.bills_action;
+DROP TABLE IF EXISTS members.bills_subjects;
+
 -- SQLBook: Markup
 # <span style="color:darkblue"> III. Import CSV into SQL </span>
 
