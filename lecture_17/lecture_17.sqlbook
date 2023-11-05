@@ -167,6 +167,7 @@ Import the data before proceeding!
 
 Count unique rows
 -- SQLBook: Code
+-- Active: 1698697300518@@127.0.0.1@5432@us_congress@members
 -- COUNT(DISTINCT ) computes the number of unique rows
 -- "AS" is the alias or name of the statistic
 
@@ -185,15 +186,19 @@ GROUP BY party_name
 
 Count members of group
 -- SQLBook: Code
+-- Active: 1698697300518@@127.0.0.1@5432@us_congress
 SELECT party_name,       
        COUNT(*) AS num_members       
 FROM members.us_congress_members
 GROUP BY party_name;
+-- SQLBook: Code
+--what does (*) mean?
 -- SQLBook: Markup
 <font size = "5">
 
 Merge Databases
 -- SQLBook: Code
+-- Active: 1698697300518@@127.0.0.1@5432@us_congress
 -- FROM indicates the primary table
 -- LEFT JOIN indicates the secondary table for merging
 -- ON ... = ... is the matching column
@@ -228,8 +233,21 @@ AND schema1.table1.key1_3 = schema2.table2.key2_3;
 
 - **Hint:** the rows in the two tables are uniquely identified by the columns: ```congress```, ```bill_number```, ```bill_type```
 -- SQLBook: Code
+-- Active: 1698697300518@@127.0.0.1@5432@us_congress
 -- Write your own code
-
+SELECT *
+FROM bills.bills_action
+LEFT JOIN bills.bills_subjects
+ON bills.bills_action.congress = bills.bills_subjects.congress
+AND  bills.bills_action.bill_number = bills.bills_subjects.bill_number
+AND  bills.bills_action.bill_type = bills.bills_subjects.bill_type
+-- SQLBook: Code
+SELECT *
+FROM bills.bills_subjects
+LEFT JOIN bills.bills_action 
+ON bills_subjects.congress = bills_action .congress
+AND  bills_subjects.bill_number = bills_action .bill_number
+AND  bills_subjects.bill_type = bills_action.bill_type
 -- SQLBook: Markup
 # <span style="color:darkblue"> IV. (Optional) Additional Resources </span>
 
