@@ -186,7 +186,6 @@ GROUP BY party_name
 
 Count members of group
 -- SQLBook: Code
--- Active: 1698697300518@@127.0.0.1@5432@us_congress
 SELECT party_name,       
        COUNT(*) AS num_members       
 FROM members.us_congress_members
@@ -234,6 +233,8 @@ AND schema1.table1.key1_3 = schema2.table2.key2_3;
 - **Hint:** the rows in the two tables are uniquely identified by the columns: ```congress```, ```bill_number```, ```bill_type```
 -- SQLBook: Code
 -- Active: 1698697300518@@127.0.0.1@5432@us_congress
+-- Active: 1698674191041@@127.0.0.1@5432@us_congress
+
 -- Write your own code
 SELECT *
 FROM bills.bills_action
@@ -242,6 +243,7 @@ ON bills.bills_action.congress = bills.bills_subjects.congress
 AND  bills.bills_action.bill_number = bills.bills_subjects.bill_number
 AND  bills.bills_action.bill_type = bills.bills_subjects.bill_type
 -- SQLBook: Code
+-- Active: 1698697300518@@127.0.0.1@5432@us_congress
 SELECT *
 FROM bills.bills_subjects
 LEFT JOIN bills.bills_action 
