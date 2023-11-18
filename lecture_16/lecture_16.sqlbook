@@ -108,7 +108,7 @@ Try it yourself!
 -- Select a new driver id (needs to be unique)
 -- Make sure to deparate arguments by a semicolon!
 
-<<<<<<< HEAD
+
 INSERT INTO drivers  VALUES (5, 'Jenkins Johnson','Canada',73);
 INSERT INTO drivers  VALUES (6, 'Liu Dapao','China',98);
 

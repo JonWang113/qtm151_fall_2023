@@ -190,6 +190,7 @@ GROUP BY party_name
 
 Count members of group
 -- SQLBook: Code
+-- Active: 1698697300518@@127.0.0.1@5432@us_congress
 SELECT party_name,       
        COUNT(*) AS num_members       
 FROM members.us_congress_members
